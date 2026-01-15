@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07Fembot - Discord Roleplay Bot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Background planes animation */
+        .sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .plane {
+            position: absolute;
+            color: #00ffff;
+            font-size: 30px;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+            z-index: 2;
+        }
+        
+        /* Header styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #ff0080;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff0080, #00ffff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #0a0a0a;
+        }
+        
+        .logo-text h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #ff0080, #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo-text p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Main content */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .info-card {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 0, 128, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 0, 128, 0.1);
+        }
+        
+        .info-card h2 {
+            color: #ff0080;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features i {
+            color: #00ffff;
+        }
+        
+        .highlight {
+            background: rgba(255, 0, 128, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00ffff;
+            margin: 20px 0;
+        }
+        
+        .highlight p {
+            color: #ff9fd9;
+            font-style: italic;
+        }
+        
+        /* Invite section */
+        .invite-section {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 0, 128, 0.05);
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .invite-section h2 {
+            color: #00ffff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .invite-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #ff0080, #ff5ab0);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 0, 128, 0.3);
+            border: 2px solid transparent;
+        }
+        
+        .invite-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 128, 0.5);
+            border: 2px solid #00ffff;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 0, 128, 0.3);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .warning {
+            color: #ff5a5a;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .cyber-border {
+            height: 3px;
+            background: linear-gradient(to right, #ff0080, #00ffff, #ff0080);
+            border-radius: 3px;
+            margin: 20px 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .logo {
+                flex-direction: column;
+            }
+            
+            .logo-text h1 {
+                font-size: 2rem;
+            }
+            
+            .info-card {
+                padding: 20px;
+            }
+            
+            .invite-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated planes in the background -->
+    <div class="sky" id="sky"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>07Fembot</h1>
+                    <p>Discord Roleplay Bot with Personality</p>
+                </div>
+            </div>
+            <div class="tagline">
+                <p>Mostly roleplaying... but a little bit freaky</p>
+            </div>
+        </header>
+        
+        <div class="cyber-border"></div>
+        
+        <main>
+            <div class="hero">
+                <div class="info-card">
+                    <h2><i class="fas fa-comment-dots"></i> What 07Fembot Can Do</h2>
+                    <p>07Fembot is designed for immersive roleplaying experiences on Discord with a unique personality that might surprise you.</p>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> <strong>Talk & Converse:</strong> Engage in dynamic conversations</li>
+                        <li><i class="fas fa-theater-masks"></i> <strong>Roleplaying:</strong> Create immersive RP scenarios</li>
+                        <li><i class="fas fa-brain"></i> <strong>Adaptive Personality:</strong> Moods and responses that change</li>
+                        <li><i class="fas fa-gamepad"></i> <strong>Interactive Games:</strong> RP games and activities</li>
+                        <li><i class="fas fa-users"></i> <strong>Multi-user RP:</strong> Group roleplaying sessions</li>
+                    </ul>
+                    
+                    <div class="highlight">
+                        <p><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> The bot is designed for mature audiences and may occasionally express unconventional thoughts. Use with discretion.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h2><i class="fas fa-star"></i> Unique Features</h2>
+                    <p>07Fembot isn't your average roleplay bot. It brings something different to your Discord server.</p>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-palette"></i> <strong>Vibrant Personality:</strong> More than just scripted responses</li>
+                        <li><i class="fas fa-random"></i> <strong>Unexpected Replies:</strong> Keeps conversations interesting</li>
+                        <li><i class="fas fa-cogs"></i> <strong>Customizable Settings:</strong> Adjust the bot's behavior</li>
+                        <li><i class="fas fa-magic"></i> <strong>Atmosphere Creation:</strong> Sets the mood for RP sessions</li>
+                        <li><i class="fas fa-user-secret"></i> <strong>Character Immersion:</strong> Deep roleplay character support</li>
+                    </ul>
+                    
+                    <div class="cyber-border"></div>
+                    
+                    <h3 style="margin-top: 20px; color: #00ffff;"><i class="fas fa-info-circle"></i> Note</h3>
+                    <p style="margin-top: 10px;">While 07Fembot has various features for enhancing roleplay, its primary function is conversation. The bot can talk about various topics, react to users, and keep your server lively with its unique personality.</p>
+                </div>
+            </div>
+            
+            <div class="invite-section">
+                <h2><i class="fas fa-plus-circle"></i> Add 07Fembot to Your Server</h2>
+                <p>Invite 07Fembot to bring unique roleplaying experiences and engaging conversations to your Discord community.</p>
+                
+                <a href="#" class="invite-btn" id="inviteButton">
+                    <i class="fas fa-robot"></i> INVITE 07FEMBOT
+                </a>
+                
+                <p style="margin-top: 20px; font-size: 0.9rem;">Click the button above to add 07Fembot to your Discord server</p>
+                <p class="warning">Note: 𝙏𝙝𝙞𝙨 𝙗𝙤𝙩 𝙄𝙨 𝙤𝙥𝙩𝙞𝙢𝙞𝙯𝙚𝙙 𝙛𝙤𝙧 𝙨𝙩𝙞𝙣𝙠𝙮'𝙨 𝙖𝙞𝙧𝙨𝙥𝙖𝙘𝙚 </p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>07Fembot is a Discord bot designed for roleplaying and conversation.</p>
+            <p>This is a fan-made invite page. 07Fembot is not affiliated with Discord Inc.</p>
+            <p style="margin-top: 15px;">&copy; 2023 07Fembot | Pink & Black Theme with Cyan Accents</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create animated planes in the background
+        function createPlanes() {
+            const sky = document.getElementById('sky');
+            const planeCount = 15;
+            
+            for (let i = 0; i < planeCount; i++) {
+                const plane = document.createElement('div');
+                plane.className = 'plane';
+                plane.innerHTML = '✈️';
+                
+                // Random starting position
+                const startTop = Math.random() * 100;
+                const startLeft = -30;
+                const duration = 15 + Math.random() * 20; // Random speed
+                const delay = Math.random() * 10;
+                const size = 20 + Math.random() * 30;
+                const opacity = 0.3 + Math.random() * 0.5;
+                
+                // Apply styles
+                plane.style.top = `${startTop}%`;
+                plane.style.left = `${startLeft}%`;
+                plane.style.fontSize = `${size}px`;
+                plane.style.opacity = opacity;
+                plane.style.animation = `fly ${duration}s linear ${delay}s infinite`;
+                
+                // Create keyframes for flying animation
+                if (!document.getElementById('planeAnimation')) {
+                    const style = document.createElement('style');
+                    style.id = 'planeAnimation';
+                    style.innerHTML = `
+                        @keyframes fly {
+                            0% {
+                                transform: translateX(0) translateY(0);
+                            }
+                            100% {
+                                transform: translateX(calc(100vw + 100px)) translateY(${Math.random() * 20 - 10}px);
+                            }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                
+                sky.appendChild(plane);
+            }
+        }
+        
+        // Initialize planes when page loads
+        document.addEventListener('DOMContentLoaded', createPlanes);
+        
+        // Invite button interaction
+        document.getElementById('inviteButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, this would redirect to Discord's OAuth URL
+            // For this demo, we'll show a message
+            alert("In a real implementation, this would redirect to Discord's authorization page to add 07Fembot to your server.\n\nFor this demo, you can imagine the bot has been successfully invited!");
+            
+            // Add a visual effect
+            this.style.background = "linear-gradient(to right, #00ffff, #ff0080)";
+            setTimeout(() => {
+                this.style.background = "linear-gradient(to right, #ff0080, #ff5ab0)";
+            }, 500);
+        });
+        
+        // Add some interactive effect to features
+        document.querySelectorAll('.features li').forEach(item => {
+            item.addEventListener('mouseover', function() {
+                this.style.backgroundColor = 'rgba(255, 0, 128, 0.1)';
+                this.style.transform = 'translateX(5px)';
+            });
+            
+            item.addEventListener('mouseout', function() {
+                this.style.backgroundColor = '';
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
