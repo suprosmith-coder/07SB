@@ -14,8 +14,8 @@
         }
         
         body {
-            background-color: #0a0a0a;
-            color: #f5f5f5;
+            background-color: #000000;
+            color: #ff00dc;
             overflow-x: hidden;
             min-height: 100vh;
         }
@@ -67,7 +67,7 @@
         .logo-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #ff0080, #00ffff);
+            background: linear-gradient(135deg, #ff00dc, #00ffff);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -78,7 +78,7 @@
         
         .logo-text h1 {
             font-size: 2.5rem;
-            background: linear-gradient(to right, #ff0080, #00ffff);
+            background: linear-gradient(to right, #ff00dc, #00ffff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -112,7 +112,7 @@
         }
         
         .info-card h2 {
-            color: #ff0080;
+            color: #ff00dc;
             margin-bottom: 20px;
             font-size: 1.8rem;
         }
@@ -207,6 +207,15 @@
             margin: 20px 0;
         }
         
+        .real-link-notice {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #00ffff;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .container {
@@ -274,7 +283,7 @@
                     </ul>
                     
                     <div class="highlight">
-                        <p><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> The bot is designed for mature audiences and may occasionally express unconventional thoughts. Use with discretion.</p>
+                        <p><i class="fas fa-exclamation-triangle"></i> <strong>𝙄𝙢𝙥𝙤𝙧𝙩𝙖𝙣𝙩:</strong> 𝙏𝙝𝙞𝙨 𝘽𝙤𝙩 𝙄𝙨 𝘽𝙖𝙨𝙚𝙙 𝙊𝙛𝙛 𝙤𝙛 07𝙎𝙩𝙞𝙣𝙠𝙮 𝙖𝙨 𝙖 𝙁𝙚𝙢𝙗𝙤𝙮.</p>
                     </div>
                 </div>
                 
@@ -285,15 +294,15 @@
                     <ul class="features">
                         <li><i class="fas fa-palette"></i> <strong>Vibrant Personality:</strong> More than just scripted responses</li>
                         <li><i class="fas fa-random"></i> <strong>Unexpected Replies:</strong> Keeps conversations interesting</li>
-                        <li><i class="fas fa-cogs"></i> <strong>Customizable Settings:</strong> Adjust the bot's behavior</li>
+                        <li><i class="fas fa-cogs"></i> <strong>Link Attachment:</strong> Can Attach links once given permission</li>
                         <li><i class="fas fa-magic"></i> <strong>Atmosphere Creation:</strong> Sets the mood for RP sessions</li>
                         <li><i class="fas fa-user-secret"></i> <strong>Character Immersion:</strong> Deep roleplay character support</li>
                     </ul>
                     
                     <div class="cyber-border"></div>
                     
-                    <h3 style="margin-top: 20px; color: #00ffff;"><i class="fas fa-info-circle"></i> Note</h3>
-                    <p style="margin-top: 10px;">While 07Fembot has various features for enhancing roleplay, its primary function is conversation. The bot can talk about various topics, react to users, and keep your server lively with its unique personality.</p>
+                    <h3 style="margin-top: 20px; color: #00ffff;"><i class="fas fa-info-circle"></i> 𝙉𝙤𝙩𝙚</h3>
+                    <p style="margin-top: 10px;">𝙒𝙝𝙞𝙡𝙚 07𝙁𝙚𝙢𝙗𝙤𝙩 𝙝𝙖𝙨 𝙫𝙖𝙧𝙞𝙤𝙪𝙨 𝙛𝙚𝙖𝙩𝙪𝙧𝙚𝙨 𝙛𝙤𝙧 𝙚𝙣𝙝𝙖𝙣𝙘𝙞𝙣𝙜 𝙧𝙤𝙡𝙚𝙥𝙡𝙖𝙮, 𝙞𝙩𝙨 𝙥𝙧𝙞𝙢𝙖𝙧𝙮 𝙛𝙪𝙣𝙘𝙩𝙞𝙤𝙣 𝙞𝙨 𝙘𝙤𝙣𝙫𝙚𝙧𝙨𝙖𝙩𝙞𝙤𝙣. 𝙏𝙝𝙚 𝙗𝙤𝙩 𝙘𝙖𝙣 𝙩𝙖𝙡𝙠 𝙖𝙗𝙤𝙪𝙩 𝙫𝙖𝙧𝙞𝙤𝙪𝙨 𝙩𝙤𝙥𝙞𝙘𝙨, 𝙧𝙚𝙖𝙘𝙩 𝙩𝙤 𝙪𝙨𝙚𝙧𝙨, 𝙖𝙣𝙙 𝙠𝙚𝙚𝙥 𝙮𝙤𝙪𝙧 𝙨𝙚𝙧𝙫𝙚𝙧 𝙡𝙞𝙫𝙚𝙡𝙮 𝙬𝙞𝙩𝙝 𝙞𝙩𝙨 𝙪𝙣𝙞𝙦𝙪𝙚 𝙥𝙚𝙧𝙨𝙤𝙣𝙖𝙡𝙞𝙩𝙮.</p>
                 </div>
             </div>
             
@@ -301,19 +310,24 @@
                 <h2><i class="fas fa-plus-circle"></i> Add 07Fembot to Your Server</h2>
                 <p>Invite 07Fembot to bring unique roleplaying experiences and engaging conversations to your Discord community.</p>
                 
-                <a href="#" class="invite-btn" id="inviteButton">
-                    <i class="fas fa-robot"></i> INVITE 07FEMBOT
+                <!-- UPDATED: Real Discord invite link added here -->
+                <a href="https://discord.com/oauth2/authorize?client_id=1461472998010912889" class="invite-btn" id="inviteButton" target="_blank">
+                    <i class="fas fa-robot"></i> 𝙄𝙣𝙫𝙞𝙩𝙚 𝘽𝙤𝙩
                 </a>
                 
+                <div class="real-link-notice">
+                    <i class="fas fa-link"></i> 𝘽𝙤𝙩 𝙄𝙣𝙫𝙞𝙩𝙚 𝘼𝙘𝙩𝙞𝙫𝙚😼
+                </div>
+                
                 <p style="margin-top: 20px; font-size: 0.9rem;">Click the button above to add 07Fembot to your Discord server</p>
-                <p class="warning">Note: 𝙏𝙝𝙞𝙨 𝙗𝙤𝙩 𝙄𝙨 𝙤𝙥𝙩𝙞𝙢𝙞𝙯𝙚𝙙 𝙛𝙤𝙧 𝙨𝙩𝙞𝙣𝙠𝙮'𝙨 𝙖𝙞𝙧𝙨𝙥𝙖𝙘𝙚 </p>
+                <p class="warning">Note:𝙏𝙝𝙞𝙨 𝘽𝙤𝙩 𝙄𝙨 𝙊𝙥𝙩𝙞𝙢𝙞𝙯𝙚𝙙 𝙁𝙤𝙧 𝙎𝙩𝙞𝙣𝙠𝙮'𝙨 𝘼𝙞𝙧𝙨𝙥𝙖𝙘𝙚</p>
             </div>
         </main>
         
         <footer>
             <p>07Fembot is a Discord bot designed for roleplaying and conversation.</p>
-            <p>This is a fan-made invite page. 07Fembot is not affiliated with Discord Inc.</p>
-            <p style="margin-top: 15px;">&copy; 2023 07Fembot | Pink & Black Theme with Cyan Accents</p>
+            <p>This is a fan-made bot. 07Fembot is not affiliated with Discord Inc.</p>
+            <p style="margin-top: 15px;">&copy; 2026 07Fembot | Made With Love For Stinky's Airspace 😘❤❤</p>
         </footer>
     </div>
 
@@ -321,12 +335,12 @@
         // Create animated planes in the background
         function createPlanes() {
             const sky = document.getElementById('sky');
-            const planeCount = 15;
+            const planeCount = 10;
             
             for (let i = 0; i < planeCount; i++) {
                 const plane = document.createElement('div');
                 plane.className = 'plane';
-                plane.innerHTML = '✈️';
+                plane.innerHTML = '🛸';
                 
                 // Random starting position
                 const startTop = Math.random() * 100;
@@ -367,19 +381,15 @@
         // Initialize planes when page loads
         document.addEventListener('DOMContentLoaded', createPlanes);
         
-        // Invite button interaction
+        // Updated invite button interaction (keeps visual effect but uses real link)
         document.getElementById('inviteButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // In a real implementation, this would redirect to Discord's OAuth URL
-            // For this demo, we'll show a message
-            alert("In a real implementation, this would redirect to Discord's authorization page to add 07Fembot to your server.\n\nFor this demo, you can imagine the bot has been successfully invited!");
-            
-            // Add a visual effect
+            // Keep the visual effect
             this.style.background = "linear-gradient(to right, #00ffff, #ff0080)";
             setTimeout(() => {
                 this.style.background = "linear-gradient(to right, #ff0080, #ff5ab0)";
             }, 500);
+            
+            // The link will open in a new tab (target="_blank" is set in the HTML)
         });
         
         // Add some interactive effect to features
@@ -396,4 +406,4 @@
         });
     </script>
 </body>
-</html>
+</html>l>
